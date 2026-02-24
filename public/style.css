@@ -1,0 +1,26 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: #434343;
+    color: #ffffff;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+}
+
+.card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #303030;
+    color: #b6b6b6;
+    border:solid 1px #747474;
+    border-radius: 32px;
+
+    width: 700px;
+    height: 400px;
+}
