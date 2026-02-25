@@ -1,0 +1,16 @@
+{
+  "subject": "none",
+  "potential_subjects": [
+    "none",
+    "other",
+    "ota"
+  ],
+  "cards": [
+    {
+      "subject": "subject",
+      "title": "test",
+      "info": "blah blah blah",
+      "answer": "bleh bleh bleh"
+    }
+  ]
+}
