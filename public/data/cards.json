@@ -1,14 +1,20 @@
 {
-  "subject": "none",
+  "subject": "Orange",
   "potential_subjects": [
-    "none",
-    "other",
-    "ota"
+    "Orange",
+    "Banana",
+    "Apple"
   ],
   "cards": [
     {
-      "subject": "subject",
+      "subject": "Orange",
       "title": "test",
+      "info": "blah blah blah",
+      "answer": "bleh bleh bleh"
+    },
+    {
+      "subject": "Apple",
+      "title": "test2",
       "info": "blah blah blah",
       "answer": "bleh bleh bleh"
     }

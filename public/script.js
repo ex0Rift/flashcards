@@ -1,33 +1,57 @@
 subjects_selector = document.getElementById('subjects_selector');
+subject_text = document.getElementById('subject_text');
 
-function ReloadData(type = 0){
+card_title = document.getElementById('title');
+
+let cards_list = [];
+let current_subject;
+
+
+//function for loading the next card
+function loadCard(cardNum){
+    card_title.textContent = cards_list[cardNum].title;
+}
+
+function loadSubjectList(){
     fetch('data/cards.json')
         .then(res => res.json())
         .then(data => {
-            //get and set the current subject to what is in the json file
-            let current_subject = data.subject;
-
-            //loop through the potential subjects
-            data.potential_subjects.forEach(item => {
-                const option = document.createElement("option");
-                option.value = item;
-                option.textContent = item;
-                subjects_selector.appendChild(option);
-            }); 
-
-            //loop throgh the cards
+            //fill the list with the items
+            cards_list = [];
             data.cards.forEach(item => {
-                console.log(item.title);
+                if (item.subject === current_subject) cards_list.push(item);
             });
+            console.log(cards_list);
+
+            //load the first card that has the correct subject
+            card_title.textContent = cards_list[0].title;
         });
+
 }
-//run when pages loads first
-ReloadData();
+
+//fetch inititally 
+fetch('data/cards.json')
+    .then(res => res.json())
+    .then(data => {
+        //get and set the current subject to what is in the json file
+        current_subject = data.subject;
+        subject_text.textContent = current_subject;
+
+        //loop through the potential subjects
+        data.potential_subjects.forEach(item => {
+            const option = document.createElement("option");
+            option.textContent = item;
+            subjects_selector.appendChild(option);
+        });    
+    });
+    loadSubjectList(); 
+
 
 //check when subject is changed
 subjects_selector.addEventListener("change", function (){
     //get the value
     current_subject = subjects_selector.value;
+    subject_text.textContent = current_subject;
     //save it to JSON
     fetch("/updateData", {
         method: "POST",
@@ -36,5 +60,6 @@ subjects_selector.addEventListener("change", function (){
         },
         body:JSON.stringify({subject:current_subject})
     });
-
+    loadSubjectList();
+    loadCard(0);
 });
