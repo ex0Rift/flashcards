@@ -19,13 +19,20 @@
 
 
         <div class="card">
-            <h1 id="title">example text</h1>
-            <p id="info">example text</p>
+            <div class="info-area">
+                <h1 id="title">example text</h1>
+                <p id="info">example text</p>
+            </div>
+            <div id="answer_area" style="display: none;">
+                <h3>Answer:</h3>
+                <p id="answer">example text</p>
+            </div>
+                
         </div>
 
         <div class="controls">
             <button id="back" onclick="switchCard(-1)">&lt;</button>
-            <button>answer</button>
+            <button onclick="toggleAnswer()" id="answer_button">answer</button>
             <button id="forward" onclick="switchCard(1)">&gt;</button>
         </div>
 

@@ -13,9 +13,12 @@ body{
 
 .card{
     position: absolute;
+    display: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    flex-direction: column;
+    justify-content: space-between;
 
     background-color: #303030;
     color: #b6b6b6;
@@ -26,7 +29,7 @@ body{
     width: 700px;
     height: 400px;
 
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 .controls{

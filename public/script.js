@@ -3,16 +3,22 @@ subject_text = document.getElementById('subject_text');
 
 card_title = document.getElementById('title');
 card_info = document.getElementById('info');
+card_answer = document.getElementById('answer');
+card_answer_area = document.getElementById('answer_area');
+
+answer_button = document.getElementById('answer_button');
 
 let cards_list = [];
 let current_subject;
 let current_card = 0;
+let showing_answer = false;
 
 
 //function for loading the next card
 function loadCard(cardNum){
     card_title.textContent = cards_list[cardNum].title;
     card_info.textContent = cards_list[cardNum].info;
+    card_answer.textContent = cards_list[cardNum].answer;
 }
 
 function loadSubjectList(){
@@ -30,12 +36,31 @@ function loadSubjectList(){
         });
 }
 
+//function for showing the answer of the card
+function toggleAnswer(){
+    if (!showing_answer){
+        card_answer_area.style.display = "initial";
+        answer_button.style.backgroundColor = "#434343";
+    }else {
+        card_answer_area.style.display = "none";
+        answer_button.style.backgroundColor = "#303030";
+    }
+    showing_answer = !showing_answer;
+}
+
 //for chosing next card by pressing the button
 function switchCard(num){
     current_card += num;
     if (current_card === -1)current_card = 0;
     if (current_card === cards_list.length) current_card --;
     loadCard(current_card);
+
+    //hide the answer
+    if (showing_answer){
+        card_answer_area.style.display = "none";
+        answer_button.style.backgroundColor = "#303030";
+        showing_answer = !showing_answer;
+    }
 }
 
 //fetch inititally 
