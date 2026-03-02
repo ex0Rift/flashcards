@@ -8,11 +8,29 @@ card_answer_area = document.getElementById('answer_area');
 
 answer_button = document.getElementById('answer_button');
 
+new_entry = document.getElementById('new_entry');
+
 let cards_list = [];
 let current_subject;
 let current_card = 0;
 let showing_answer = false;
 
+let newCardMode = false;
+
+//== code for making new cards ==
+
+function toggleNewCardUI(){
+    if (!newCardMode){
+        new_entry.style.display = "flex";
+    } else {
+        new_entry.style.display = "none";
+    }
+    newCardMode = !newCardMode;
+
+}
+
+
+//==  code for the card ==
 
 //function for loading the next card
 function loadCard(cardNum){
@@ -63,24 +81,6 @@ function switchCard(num){
     }
 }
 
-//fetch inititally 
-fetch('data/cards.json')
-    .then(res => res.json())
-    .then(data => {
-        //get and set the current subject to what is in the json file
-        current_subject = data.subject;
-        subject_text.textContent = current_subject;
-
-        //loop through the potential subjects
-        data.potential_subjects.forEach(item => {
-            const option = document.createElement("option");
-            option.textContent = item;
-            subjects_selector.appendChild(option);
-        });    
-    });
-    loadSubjectList(); 
-
-
 //check when subject is changed
 subjects_selector.addEventListener("change", function (){
     //get the value
@@ -97,3 +97,21 @@ subjects_selector.addEventListener("change", function (){
     loadSubjectList();
     loadCard(0);
 });
+
+// == initial fetvh at the runtime ==
+fetch('data/cards.json')
+    .then(res => res.json())
+    .then(data => {
+        //get and set the current subject to what is in the json file
+        current_subject = data.subject;
+        subject_text.textContent = current_subject;
+
+        //loop through the potential subjects
+        data.potential_subjects.forEach(item => {
+            const option = document.createElement("option");
+            option.textContent = item;
+            subjects_selector.appendChild(option);
+        });    
+    });
+    loadSubjectList(); 
+    

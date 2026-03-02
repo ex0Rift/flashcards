@@ -5,14 +5,14 @@
         <title>Flashcards</title>
         <meta name="description" content="">
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="assets/icon.png">
+        <link rel="icon" type="image/png" href="assets/main_icon.png">
         
     </head>
     <body>
         <div class="sidebar">
-            <img src="assets/icon.png">
-            <h1 class="item">E</h1>
-            <h1 class="item">E</h1>
+            <img id="home_icon" src="assets/main_icon.png">
+            <img src="assets/add_icon.png" onclick="toggleNewCardUI();">
+            <img src="assets/remove_icon.png">
         </div>
 
         <h1 id="subject_text">Example</h1>
@@ -26,8 +26,15 @@
             <div id="answer_area" style="display: none;">
                 <h3>Answer:</h3>
                 <p id="answer">example text</p>
+            </div>          
+        </div>
+
+        <div id="new_entry">
+            <h1>make a new Card</h1>
+            <div class="bottom-row">
+                <button>Cancel</button>
+                <button>Make</button>
             </div>
-                
         </div>
 
         <div class="controls">
