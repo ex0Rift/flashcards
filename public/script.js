@@ -1,6 +1,8 @@
 subjects_selector = document.getElementById('subjects_selector');
 subject_text = document.getElementById('subject_text');
 
+card_adding_subject_selector = document.getElementById('card_adding_subject_selector');
+
 card_title = document.getElementById('title');
 card_info = document.getElementById('info');
 card_answer = document.getElementById('answer');
@@ -111,6 +113,7 @@ fetch('data/cards.json')
             const option = document.createElement("option");
             option.textContent = item;
             subjects_selector.appendChild(option);
+            card_adding_subject_selector.appendChild(option);
         });    
     });
     loadSubjectList(); 

@@ -31,10 +31,18 @@
 
         <div id="new_entry">
             <h1>make a new Card</h1>
-            <div class="bottom-row">
-                <button>Cancel</button>
-                <button>Make</button>
-            </div>
+            <form>
+                <div class="entry-area">
+                    <select name="subjects" id="card_adding_subject_selector">select subject</select>
+                    <input type="text" name="title">
+                    <input type="text" name="info">
+                    <input type="text" name="answer">
+                </div>
+                <div class="bottom-row">
+                    <button type="button" onclick="toggleNewCardUI()">Cancel</button>
+                    <button type="submit">Make</button>
+                </div>
+            </form>
         </div>
 
         <div class="controls">
